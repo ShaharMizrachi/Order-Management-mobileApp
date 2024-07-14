@@ -1,51 +1,36 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
+//@format
 import React from 'react';
-import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import Main from './src/screens/Main';
+import store from './src/redux/store';
+import { Provider } from 'react-redux';
 
 
-function App(): React.JSX.Element {
 
-
+const App = (): React.JSX.Element => {
 
 
   return (
-    <SafeAreaView style={styles.generalDesign}>
-      <View>
-        <Text>
-          ss
-        </Text>
-      </View>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.generalDesign}>
+        <View>
+          <Main />
+        </View>
+      </SafeAreaView>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
   generalDesign: {
     backgroundColor: "#D6EFD8",
-    flex: 1
+    flex: 1,
+    direction: 'rtl'
   }
 });
 
