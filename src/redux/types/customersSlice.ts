@@ -1,6 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {Customer} from './types';
 
-const initialState = {
+interface CustomerState {
+  allCustomers: Customer[];
+}
+
+const initialState: CustomerState = {
   allCustomers: [],
 };
 

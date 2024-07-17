@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import He from './../components/locales/He';
 import { useDispatch, useSelector } from 'react-redux';
+import { Product } from './../redux/types/types';
+import { Customer } from './../redux/types/types';
 
 import { RootState } from '../redux/store';
 import { setAllProducts } from '../redux/types/productsSlice';
 import { setAllCustomers } from '../redux/types/customersSlice';
 
-interface Product {
-    id: number;
-    name: string;
-}
-
-interface Customer {
-    id: number;
-    name: string;
-    address: string;
-}
 
 const Main: React.FC = () => {
-    // const [allCustomers, setAllCustomers] = useState<Customer[]>([]);
     const [newProduct, setNewProduct] = useState<Product>();
-    const [showList, setShowList] = useState(false);
+    const [showList, setShowList] = useState({
+        showAllProducts: false,
+        showAllCustomers: false
+    });
 
     const dispatch = useDispatch();
     const allProducts = useSelector((state: RootState) => state.products.allProducts);
@@ -51,21 +45,49 @@ const Main: React.FC = () => {
     }, [dispatch]);
 
 
-    const toggleList = () => {
-        setShowList(!showList);
+    const toggleList = (typeOfList: 'showAllProducts' | 'showAllCustomers') => {
+        setShowList(prevState => ({
+            ...prevState,
+            [typeOfList]: !prevState[typeOfList]
+        }))
     };
+
+
+    const inputOnChange = (event: any, inputType: string) => {
+        console.log(event.nativeEvent.text)
+        console.log('====================================');
+        console.log(inputType);
+        console.log('====================================');
+    }
+
+
 
     return (
         <View>
             <View style={styles.titleMain}><Text>{He.order_system}</Text></View>
             <View style={styles.list_input_container}>
                 <View>
-                    <Button title={showList ? "-" : "+"} onPress={toggleList} />
-                    {showList && (
+                    <TextInput onChange={(text) => inputOnChange(text, "newproductFiled")} />
+                    <Button title={showList ? "-" : "+"} onPress={() => toggleList('showAllProducts')} />
+                    {showList.showAllProducts && (
                         <ScrollView style={styles.listProductsContainer}>
                             {allProducts.map((fruit: Product) => (
                                 <Text key={fruit.id}>{fruit.name}</Text>
                             ))}
+                        </ScrollView>
+                    )}
+                </View>
+                <View>
+                    <TextInput onChange={(text) => inputOnChange(text, "newCustomerFiled")} />
+                    <Button title={showList ? "-" : "+"} onPress={() => toggleList('showAllCustomers')} />
+                    {showList.showAllCustomers && (
+                        <ScrollView>
+                            {allCustomers.map((customer: Customer) =>
+                                <Text key={customer.id}>
+                                    {customer.name}
+                                </Text>
+
+                            )}
                         </ScrollView>
                     )}
                 </View>
