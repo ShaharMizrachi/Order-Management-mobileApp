@@ -2,6 +2,7 @@
 import React from 'react';
 import {
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -28,9 +29,10 @@ const App = (): React.JSX.Element => {
 
 const styles = StyleSheet.create({
   generalDesign: {
-    backgroundColor: "#D6EFD8",
+    backgroundColor: "#FFFFFF",
     flex: 1,
-    direction: 'rtl'
+    direction: 'rtl',
+    overflow: 'scroll'
   }
 });
 

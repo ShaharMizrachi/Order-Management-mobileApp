@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import He from './../components/locales/He';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product } from './../redux/types/types';
@@ -8,6 +8,7 @@ import { Customer } from './../redux/types/types';
 import { RootState } from '../redux/store';
 import { setAllProducts } from '../redux/types/productsSlice';
 import { setAllCustomers } from '../redux/types/customersSlice';
+import System_Button from '../components/ui/System_Button';
 
 
 const Main: React.FC = () => {
@@ -64,7 +65,7 @@ const Main: React.FC = () => {
 
     return (
         <View>
-            <View style={styles.titleMain}><Text>{He.order_system}</Text></View>
+            <View style={styles.titleMainView}><Text style={styles.title_text} >{He.order_system}</Text></View>
             <View style={styles.list_input_container}>
                 <View>
                     <TextInput onChange={(text) => inputOnChange(text, "newproductFiled")} />
@@ -86,12 +87,20 @@ const Main: React.FC = () => {
                                 <Text key={customer.id}>
                                     {customer.name}
                                 </Text>
-
                             )}
                         </ScrollView>
                     )}
                 </View>
             </View>
+            <View style={styles.buttons_container}>
+                <Pressable>
+                    <Text>{He.strat_new_order}</Text>
+                </Pressable>
+                <Pressable >
+                    <Text>{He.continue_exist_order}</Text>
+                </Pressable>
+            </View>
+            <View><System_Button buttonWidth={100} text={'testtt'} /></View>
         </View>
     );
 };
@@ -101,9 +110,21 @@ const styles = StyleSheet.create({
         backgroundColor: "#D6EFD8",
         flex: 1
     },
-    titleMain: {},
+    titleMainView: {
+        display: 'flex',
+        marginTop: 10
+    },
+    title_text: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: '#111111',
+        overflow: 'hidden',
+        textAlign: 'center'
+
+    },
     list_input_container: {},
-    listProductsContainer: {}
+    listProductsContainer: {},
+    buttons_container: {}
 });
 
 export default Main;

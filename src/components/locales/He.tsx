@@ -3,6 +3,9 @@ const He = {
   products: "מוצרים",
   enter_new_coustomers: "הכנסה של מוצרים חדשים",
   date_string: "תאריך",
+  strat_new_order: "התחל הזמנה חדשה",
+  continue_exist_order: "המשך הזמנה קיימת",
+  oredr_history: "היסטוריית הזמנות",
   apple: 'תפוח',   // Apple
   banana: 'בננה',  // Banana
   strawberry: 'תות', // Strawberry
