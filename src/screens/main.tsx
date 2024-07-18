@@ -62,6 +62,12 @@ const Main: React.FC = () => {
     }
 
 
+    const test = () => {
+        console.log('====================================');
+        console.log("shahar test function");
+        console.log('====================================');
+    }
+
 
     return (
         <View>
@@ -69,7 +75,7 @@ const Main: React.FC = () => {
             <View style={styles.list_input_container}>
                 <View>
                     <TextInput onChange={(text) => inputOnChange(text, "newproductFiled")} />
-                    <Button title={showList ? "-" : "+"} onPress={() => toggleList('showAllProducts')} />
+                    <System_Button buttonWidth={100} text={showList.showAllProducts ? "-" : "+"} functionUsed={() => toggleList('showAllProducts')} />
                     {showList.showAllProducts && (
                         <ScrollView style={styles.listProductsContainer}>
                             {allProducts.map((fruit: Product) => (
@@ -80,7 +86,7 @@ const Main: React.FC = () => {
                 </View>
                 <View>
                     <TextInput onChange={(text) => inputOnChange(text, "newCustomerFiled")} />
-                    <Button title={showList ? "-" : "+"} onPress={() => toggleList('showAllCustomers')} />
+                    <System_Button buttonWidth={100} text={showList.showAllCustomers ? "-" : "+"} functionUsed={() => toggleList('showAllCustomers')} />
                     {showList.showAllCustomers && (
                         <ScrollView>
                             {allCustomers.map((customer: Customer) =>
@@ -93,14 +99,10 @@ const Main: React.FC = () => {
                 </View>
             </View>
             <View style={styles.buttons_container}>
-                <Pressable>
-                    <Text>{He.strat_new_order}</Text>
-                </Pressable>
-                <Pressable >
-                    <Text>{He.continue_exist_order}</Text>
-                </Pressable>
+                <View><System_Button buttonWidth={200} text={He.strat_new_order} functionUsed={() => test()} /></View>
+                <View><System_Button buttonWidth={200} text={He.continue_exist_order} functionUsed={() => test()} /></View>
             </View>
-            <View><System_Button buttonWidth={100} text={'testtt'} /></View>
+
         </View>
     );
 };
