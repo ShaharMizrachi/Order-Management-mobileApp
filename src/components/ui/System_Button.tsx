@@ -1,22 +1,9 @@
 import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { fontFamilies } from '../constants/fonts';
 
-const System_Button = ({ buttonWidth, text, functionUsed }: { buttonWidth: number, text: string, functionUsed: () => void }) => {
+const System_Button = ({ text, functionUsed }: { text: string, functionUsed: () => void }) => {
 
-    const styles = StyleSheet.create({
-        buttonPrsss: {
-            backgroundColor: '#222222',
-            maxWidth: buttonWidth,
-            maxHeight: 100,
-            paddingHorizontal: 20,
-            paddingVertical: 10,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 8,
-            display: 'flex'
-        },
 
-    })
 
     return (
         <>
@@ -29,13 +16,31 @@ const System_Button = ({ buttonWidth, text, functionUsed }: { buttonWidth: numbe
 
 }
 
+
+
+
+const styles = StyleSheet.create({
+    buttonPrsss: {
+        backgroundColor: '#222222',
+        maxWidth: '100%',
+        maxHeight: 100,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 8,
+        display: 'flex'
+    },
+
+})
+
 const extraStyle = StyleSheet.create({
     text: {
         fontFamily: fontFamilies.inter.SemiBold,
         color: '#FFFFFF',
         fontSize: 16,
 
-    }
+    },
 })
 
 export default System_Button

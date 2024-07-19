@@ -6,6 +6,8 @@ const He = {
   strat_new_order: "התחל הזמנה חדשה",
   continue_exist_order: "המשך הזמנה קיימת",
   oredr_history: "היסטוריית הזמנות",
+  products_list: "רשימת מוצרים",
+  coustomers_list: "רשימת לקוחות",
   apple: 'תפוח',   // Apple
   banana: 'בננה',  // Banana
   strawberry: 'תות', // Strawberry

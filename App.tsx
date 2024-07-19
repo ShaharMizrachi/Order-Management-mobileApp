@@ -32,7 +32,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     flex: 1,
     direction: 'rtl',
-    overflow: 'scroll'
+    // overflow: 'scroll'
+    height: "100%",
+
   }
 });
 

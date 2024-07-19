@@ -9,10 +9,15 @@ import { RootState } from '../redux/store';
 import { setAllProducts } from '../redux/types/productsSlice';
 import { setAllCustomers } from '../redux/types/customersSlice';
 import System_Button from '../components/ui/System_Button';
+import System_TextInput from '../components/ui/System_TextInput';
 
 
 const Main: React.FC = () => {
     const [newProduct, setNewProduct] = useState<Product>();
+    const [newCustomer, setNewnewCustomer] = useState<Customer>();
+    const [testt, setTest] = useState("")
+
+
     const [showList, setShowList] = useState({
         showAllProducts: false,
         showAllCustomers: false
@@ -54,11 +59,14 @@ const Main: React.FC = () => {
     };
 
 
-    const inputOnChange = (event: any, inputType: string) => {
-        console.log(event.nativeEvent.text)
+    const inputOnChange = (myText: any, inputType: string) => {
+
+
+        console.log(myText)
         console.log('====================================');
         console.log(inputType);
         console.log('====================================');
+        setTest(myText)
     }
 
 
@@ -70,12 +78,16 @@ const Main: React.FC = () => {
 
 
     return (
-        <View>
+        <View style={styles.pageContainer}>
             <View style={styles.titleMainView}><Text style={styles.title_text} >{He.order_system}</Text></View>
             <View style={styles.list_input_container}>
                 <View>
+
                     <TextInput onChange={(text) => inputOnChange(text, "newproductFiled")} />
-                    <System_Button buttonWidth={100} text={showList.showAllProducts ? "-" : "+"} functionUsed={() => toggleList('showAllProducts')} />
+                    <View style={[styles.buttons_container]}>
+
+                        <System_Button text={showList.showAllProducts ? "-    " + `${He.products_list}` : "+    " + `${He.products_list}`} functionUsed={() => toggleList('showAllProducts')} /></View>
+
                     {showList.showAllProducts && (
                         <ScrollView style={styles.listProductsContainer}>
                             {allProducts.map((fruit: Product) => (
@@ -85,8 +97,11 @@ const Main: React.FC = () => {
                     )}
                 </View>
                 <View>
-                    <TextInput onChange={(text) => inputOnChange(text, "newCustomerFiled")} />
-                    <System_Button buttonWidth={100} text={showList.showAllCustomers ? "-" : "+"} functionUsed={() => toggleList('showAllCustomers')} />
+                    {/* ///////////// */}
+                    <TextInput onChange={(text) => inputOnChange(text, "newCustomerFiled")} value={newCustomer?.name ?? ''} />
+                    <View style={{ width: "30%" }}><System_TextInput onChangeFunc={(text) => inputOnChange(text, "newCustomerFiled")} textValueState={testt} placeHolder='email ' /></View>
+                    {/* ///////////// */}
+                    <System_Button text={showList.showAllCustomers ? "-" : "+"} functionUsed={() => toggleList('showAllCustomers')} />
                     {showList.showAllCustomers && (
                         <ScrollView>
                             {allCustomers.map((customer: Customer) =>
@@ -98,19 +113,21 @@ const Main: React.FC = () => {
                     )}
                 </View>
             </View>
-            <View style={styles.buttons_container}>
-                <View><System_Button buttonWidth={200} text={He.strat_new_order} functionUsed={() => test()} /></View>
-                <View><System_Button buttonWidth={200} text={He.continue_exist_order} functionUsed={() => test()} /></View>
+            <View >
+                <View><System_Button text={He.strat_new_order} functionUsed={() => test()} /></View>
+                <View><System_Button text={He.continue_exist_order} functionUsed={() => test()} /></View>
             </View>
+
 
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    generalDesign: {
-        backgroundColor: "#D6EFD8",
-        flex: 1
+    pageContainer: {
+        flex: 1,
+
+        minHeight: "100%"
     },
     titleMainView: {
         display: 'flex',
@@ -126,7 +143,12 @@ const styles = StyleSheet.create({
     },
     list_input_container: {},
     listProductsContainer: {},
-    buttons_container: {}
+    buttons_container: {
+        width: "50%",
+        display: 'flex',
+        justifyContent: 'center'
+
+    }
 });
 
 export default Main;
