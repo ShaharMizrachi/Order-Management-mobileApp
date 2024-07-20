@@ -6,5 +6,5 @@ export interface Product {
 export interface Customer {
   id: number;
   name: string;
-  address: string;
+  address?: string;
 }

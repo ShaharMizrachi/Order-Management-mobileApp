@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, NativeSyntheticEvent, Pressable, ScrollView, StyleSheet, Text, TextInput, TextInputChangeEventData, View } from 'react-native';
 import He from './../components/locales/He';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product } from './../redux/types/types';
@@ -14,7 +14,7 @@ import System_TextInput from '../components/ui/System_TextInput';
 
 const Main: React.FC = () => {
     const [newProduct, setNewProduct] = useState<Product>();
-    const [newCustomer, setNewnewCustomer] = useState<Customer>();
+    const [newCustomer, setNewCustomer] = useState<Customer>();
     const [testt, setTest] = useState("")
 
 
@@ -58,16 +58,21 @@ const Main: React.FC = () => {
         }))
     };
 
+    const getId = (listRequired: Product[] | Customer[]): number =>
+        listRequired.length ? Math.max(...listRequired.map(item => item.id)) + 1 : 1;
 
-    const inputOnChange = (myText: any, inputType: string) => {
+
+    const inputOnChange = (myText: string, inputType: string) => {
+        const listRequired = inputType === 'newCustomerFiled' ? allCustomers : allProducts
+
+        if (inputType === 'newCustomerFiled') {
+            setNewCustomer(prevState => ({ ...prevState, name: myText, address: "", id: prevState?.id ?? getId(allCustomers) }));
+        }
 
 
-        console.log(myText)
-        console.log('====================================');
-        console.log(inputType);
-        console.log('====================================');
-        setTest(myText)
+
     }
+    // setTest(myText);
 
 
     const test = () => {
@@ -82,8 +87,7 @@ const Main: React.FC = () => {
             <View style={styles.titleMainView}><Text style={styles.title_text} >{He.order_system}</Text></View>
             <View style={styles.list_input_container}>
                 <View>
-
-                    <TextInput onChange={(text) => inputOnChange(text, "newproductFiled")} />
+                    {/* <TextInput onChange={(text) => inputOnChange(text, "newproductFiled")} /> */}
                     <View style={[styles.buttons_container]}>
 
                         <System_Button text={showList.showAllProducts ? "-    " + `${He.products_list}` : "+    " + `${He.products_list}`} functionUsed={() => toggleList('showAllProducts')} /></View>
@@ -98,8 +102,8 @@ const Main: React.FC = () => {
                 </View>
                 <View>
                     {/* ///////////// */}
-                    <TextInput onChange={(text) => inputOnChange(text, "newCustomerFiled")} value={newCustomer?.name ?? ''} />
-                    <View style={{ width: "30%" }}><System_TextInput onChangeFunc={(text) => inputOnChange(text, "newCustomerFiled")} textValueState={testt} placeHolder='email ' /></View>
+                    {/* <TextInput onChange={(text) => inputOnChange(text, "newCustomerFiled")} value={newCustomer?.name ?? ''} /> */}
+                    <View style={{ width: "30%" }}><System_TextInput onChangeFunc={(e) => inputOnChange(e as string, "newCustomerFiled")} textValueState={newCustomer?.name ?? ""} placeHolder='email ' /></View>
                     {/* ///////////// */}
                     <System_Button text={showList.showAllCustomers ? "-" : "+"} functionUsed={() => toggleList('showAllCustomers')} />
                     {showList.showAllCustomers && (
