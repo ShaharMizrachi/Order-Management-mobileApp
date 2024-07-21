@@ -68,11 +68,11 @@ const Main: React.FC = () => {
         if (inputType === 'newCustomerFiled') {
             setNewCustomer(prevState => ({ ...prevState, name: myText, address: "", id: prevState?.id ?? getId(allCustomers) }));
         }
-
-
-
+        else {
+            setNewProduct(prevState => ({ ...prevState, name: myText, id: prevState?.id ?? getId(allProducts) }))
+        }
     }
-    // setTest(myText);
+
 
 
     const test = () => {
@@ -89,7 +89,7 @@ const Main: React.FC = () => {
                 <View>
                     {/* <TextInput onChange={(text) => inputOnChange(text, "newproductFiled")} /> */}
                     <View style={[styles.buttons_container]}>
-
+                        <View style={{ width: "30%" }}><System_TextInput onChangeFunc={(e) => inputOnChange(e as string, "newProductFiled")} textValueState={newProduct?.name ?? ""} placeHolder={He.new_product} /></View>
                         <System_Button text={showList.showAllProducts ? "-    " + `${He.products_list}` : "+    " + `${He.products_list}`} functionUsed={() => toggleList('showAllProducts')} /></View>
 
                     {showList.showAllProducts && (
@@ -103,7 +103,7 @@ const Main: React.FC = () => {
                 <View>
                     {/* ///////////// */}
                     {/* <TextInput onChange={(text) => inputOnChange(text, "newCustomerFiled")} value={newCustomer?.name ?? ''} /> */}
-                    <View style={{ width: "30%" }}><System_TextInput onChangeFunc={(e) => inputOnChange(e as string, "newCustomerFiled")} textValueState={newCustomer?.name ?? ""} placeHolder='email ' /></View>
+                    <View style={{ width: "30%" }}><System_TextInput onChangeFunc={(e) => inputOnChange(e as string, "newCustomerFiled")} textValueState={newCustomer?.name ?? ""} placeHolder={He.enter_new_coustomers} /></View>
                     {/* ///////////// */}
                     <System_Button text={showList.showAllCustomers ? "-" : "+"} functionUsed={() => toggleList('showAllCustomers')} />
                     {showList.showAllCustomers && (

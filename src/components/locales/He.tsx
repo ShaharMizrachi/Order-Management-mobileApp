@@ -1,7 +1,9 @@
 const He = {
   order_system: "מערכת הזמנות",
   products: "מוצרים",
-  enter_new_coustomers: "הכנסה של מוצרים חדשים",
+  new_coustomer: "הכנס לקוח חדש",
+  new_product: "הכנס לקוח חדש",
+  enter_new_coustomers: "הכנסה של לקוחות חדשים",
   date_string: "תאריך",
   strat_new_order: "התחל הזמנה חדשה",
   continue_exist_order: "המשך הזמנה קיימת",
