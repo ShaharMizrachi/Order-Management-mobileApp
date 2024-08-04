@@ -13,66 +13,6 @@ import System_TextInput from '../components/ui/System_TextInput';
 
 
 const Main: React.FC = () => {
-    const [newProduct, setNewProduct] = useState<Product>();
-    const [newCustomer, setNewCustomer] = useState<Customer>();
-    const [testt, setTest] = useState("")
-
-
-    const [showList, setShowList] = useState({
-        showAllProducts: false,
-        showAllCustomers: false
-    });
-
-    const dispatch = useDispatch();
-    const allProducts = useSelector((state: RootState) => state.products.allProducts);
-    const allCustomers = useSelector((state: RootState) => state.customers.allCustomers)
-    useEffect(() => {
-        dispatch(setAllProducts([
-            { id: 1, name: He.apple },
-            { id: 2, name: He.banana },
-            { id: 3, name: He.strawberry },
-            { id: 4, name: He.grapes },
-            { id: 5, name: He.orange },
-            { id: 6, name: He.pineapple },
-            { id: 7, name: He.mango },
-            { id: 8, name: He.watermelon },
-            { id: 9, name: He.melon },
-            { id: 10, name: He.plum }
-        ]));
-
-        dispatch(setAllCustomers([
-            { id: 1, name: He.customer1.name, address: He.customer1.address },
-            { id: 2, name: He.customer2.name, address: He.customer2.address },
-            { id: 3, name: He.customer3.name, address: He.customer3.address },
-            { id: 4, name: He.customer4.name, address: He.customer4.address },
-            { id: 5, name: He.customer5.name, address: He.customer5.address }
-        ]))
-
-    }, [dispatch]);
-
-
-    const toggleList = (typeOfList: 'showAllProducts' | 'showAllCustomers') => {
-        setShowList(prevState => ({
-            ...prevState,
-            [typeOfList]: !prevState[typeOfList]
-        }))
-    };
-
-    const getId = (listRequired: Product[] | Customer[]): number =>
-        listRequired.length ? Math.max(...listRequired.map(item => item.id)) + 1 : 1;
-
-
-    const inputOnChange = (myText: string, inputType: string) => {
-        const listRequired = inputType === 'newCustomerFiled' ? allCustomers : allProducts
-
-        if (inputType === 'newCustomerFiled') {
-            setNewCustomer(prevState => ({ ...prevState, name: myText, address: "", id: prevState?.id ?? getId(allCustomers) }));
-        }
-        else {
-            setNewProduct(prevState => ({ ...prevState, name: myText, id: prevState?.id ?? getId(allProducts) }))
-        }
-    }
-
 
 
     const test = () => {
@@ -84,44 +24,32 @@ const Main: React.FC = () => {
 
     return (
         <View style={styles.pageContainer}>
-            <View style={styles.titleMainView}><Text style={styles.title_text} >{He.order_system}</Text></View>
-            <View style={styles.list_input_container}>
-                <View>
-                    {/* <TextInput onChange={(text) => inputOnChange(text, "newproductFiled")} /> */}
-                    <View style={[styles.buttons_container]}>
-                        <View style={{ width: "30%" }}><System_TextInput onChangeFunc={(e) => inputOnChange(e as string, "newProductFiled")} textValueState={newProduct?.name ?? ""} placeHolder={He.new_product} /></View>
-                        <System_Button text={showList.showAllProducts ? "-    " + `${He.products_list}` : "+    " + `${He.products_list}`} functionUsed={() => toggleList('showAllProducts')} /></View>
-
-                    {showList.showAllProducts && (
-                        <ScrollView style={styles.listProductsContainer}>
-                            {allProducts.map((fruit: Product) => (
-                                <Text key={fruit.id}>{fruit.name}</Text>
-                            ))}
-                        </ScrollView>
-                    )}
-                </View>
-                <View>
-                    {/* ///////////// */}
-                    {/* <TextInput onChange={(text) => inputOnChange(text, "newCustomerFiled")} value={newCustomer?.name ?? ''} /> */}
-                    <View style={{ width: "30%" }}><System_TextInput onChangeFunc={(e) => inputOnChange(e as string, "newCustomerFiled")} textValueState={newCustomer?.name ?? ""} placeHolder={He.enter_new_coustomers} /></View>
-                    {/* ///////////// */}
-                    <System_Button text={showList.showAllCustomers ? "-" : "+"} functionUsed={() => toggleList('showAllCustomers')} />
-                    {showList.showAllCustomers && (
-                        <ScrollView>
-                            {allCustomers.map((customer: Customer) =>
-                                <Text key={customer.id}>
-                                    {customer.name}
-                                </Text>
-                            )}
-                        </ScrollView>
-                    )}
-                </View>
-            </View>
-            <View >
-                <View><System_Button text={He.strat_new_order} functionUsed={() => test()} /></View>
-                <View><System_Button text={He.continue_exist_order} functionUsed={() => test()} /></View>
+            <View style={styles.titleMainView}>
+                <Text style={styles.title_text} >{He.order_system}</Text>
             </View>
 
+            <View style={[styles.buttons_container]}>
+
+                <View style={styles.button_container}>
+                    {/* sending to product page */}
+                    <System_Button
+                        text={`${He.products_list}`} functionUsed={function (): void {
+                            throw new Error('Function not implemented.');
+                        }} />
+                </View>
+                <View style={styles.button_container}>
+                    {/* sending to coustomer page */}
+                    <System_Button text={`${He.coustomers_list}`} functionUsed={function (): void {
+                        throw new Error('Function not implemented.');
+                    }} />
+                </View>
+                <View style={styles.button_container}>
+                    <System_Button text={He.strat_new_order} functionUsed={() => test()} />
+                </View>
+                <View style={styles.button_container}>
+                    <System_Button text={He.continue_exist_order} functionUsed={() => test()} />
+                </View>
+            </View>
 
         </View>
     );
@@ -135,23 +63,32 @@ const styles = StyleSheet.create({
     },
     titleMainView: {
         display: 'flex',
-        marginTop: 10
+        marginTop: 10,
+        flex: 1,
+        backgroundColor: "blue"
     },
     title_text: {
         fontSize: 25,
         fontWeight: 'bold',
         color: '#111111',
         overflow: 'hidden',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 5
 
     },
-    list_input_container: {},
-    listProductsContainer: {},
     buttons_container: {
-        width: "50%",
+        width: "100%",
         display: 'flex',
-        justifyContent: 'center'
-
+        alignItems: 'center',
+        direction: 'rtl',
+        backgroundColor: "red",
+        flex: 5
+    },
+    button_container: {
+        display: 'flex',
+        marginTop: 10,
+        justifyContent: 'center',
+        alignSelf: 'center'
     }
 });
 
