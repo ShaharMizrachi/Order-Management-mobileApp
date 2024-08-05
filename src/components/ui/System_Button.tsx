@@ -1,5 +1,6 @@
 import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { fontFamilies } from '../constants/fonts';
+import { useEffect } from 'react';
 
 const System_Button = ({ text, functionUsed }: { text: string, functionUsed: () => void }) => {
 

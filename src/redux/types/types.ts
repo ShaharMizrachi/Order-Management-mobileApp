@@ -8,3 +8,8 @@ export interface Customer {
   name: string;
   address?: string;
 }
+
+export type RootStackParamList = {
+  Main: undefined;
+  customers_products_page: {message: string};
+};
