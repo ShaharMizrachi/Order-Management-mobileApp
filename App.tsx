@@ -12,7 +12,8 @@ import store from './src/redux/store';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import List_customer_products from './src/screens/List_customer_products';
+import List_products from './src/screens/List_products';
+import List_customers from './src/screens/List_customers';
 
 
 
@@ -31,8 +32,12 @@ const App = (): React.JSX.Element => {
               component={Main}
             />
             <Stack.Screen
-              name="customers_products_page"
-              component={List_customer_products}
+              name="List_products"
+              component={List_products}
+            />
+            <Stack.Screen
+              name="List_customers"
+              component={List_customers}
             />
           </Stack.Navigator>
         </NavigationContainer>

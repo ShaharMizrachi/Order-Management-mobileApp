@@ -10,6 +10,9 @@ export interface Customer {
 }
 
 export type RootStackParamList = {
+  navigate(arg0: string): unknown;
   Main: undefined;
-  customers_products_page: {message: string};
+  customers_products_page?: {message: string};
+  List_products?: undefined;
+  List_customers?: undefined;
 };
