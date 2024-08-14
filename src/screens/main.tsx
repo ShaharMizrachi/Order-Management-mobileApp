@@ -18,6 +18,41 @@ type MainScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 const Main: React.FC = ({ }) => {
 
 
+    /////////////////////////////////////////////
+
+    const allProducts = useSelector((state: RootState) => state.products.allProducts);
+    const allCustomers = useSelector((state: RootState) => state.customers.allCustomers)
+    const dispatch = useDispatch();
+
+
+
+    useEffect(() => {
+        dispatch(setAllProducts([
+            { id: 1, name: He.apple },
+            { id: 2, name: He.banana },
+            { id: 3, name: He.strawberry },
+            { id: 4, name: He.grapes },
+            { id: 5, name: He.orange },
+            { id: 6, name: He.pineapple },
+            { id: 7, name: He.mango },
+            { id: 8, name: He.watermelon },
+            { id: 9, name: He.melon },
+            { id: 10, name: He.plum }
+        ]));
+
+        dispatch(setAllCustomers([
+            { id: 1, name: He.customer1.name, address: He.customer1.address },
+            { id: 2, name: He.customer2.name, address: He.customer2.address },
+            { id: 3, name: He.customer3.name, address: He.customer3.address },
+            { id: 4, name: He.customer4.name, address: He.customer4.address },
+            { id: 5, name: He.customer5.name, address: He.customer5.address }
+        ]))
+
+    }, [dispatch]);
+
+    ////////////////////////////////
+
+
     const navigation = useNavigation<MainScreenNavigationProp>();
 
     const test = () => {
@@ -29,10 +64,6 @@ const Main: React.FC = ({ }) => {
 
 
     const customers_products_page = (screen_requested: string) => {
-        console.log('====================================');
-        console.log("screen_requested:", screen_requested);
-        console.log('====================================');
-
         if (screen_requested == 'products') {
             navigation.navigate('List_products');
         } else if (screen_requested == 'customers') {

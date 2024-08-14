@@ -20,6 +20,7 @@ import List_customers from './src/screens/List_customers';
 
 const App = (): React.JSX.Element => {
 
+
   const Stack = createNativeStackNavigator();
 
   return (
