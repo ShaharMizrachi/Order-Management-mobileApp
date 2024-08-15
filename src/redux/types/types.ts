@@ -1,6 +1,7 @@
 export interface Product {
   id: number;
   name: string;
+  lastPriceUsed?: number;
 }
 
 export interface Customer {

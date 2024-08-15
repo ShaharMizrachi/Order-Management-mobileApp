@@ -6,9 +6,6 @@ type CustomerPageRouteProp = RouteProp<RootStackParamList, 'customer_page'>;
 
 const Customer_page = () => {
 
-
-
-
     const route = useRoute<CustomerPageRouteProp>();
     const item: Customer | undefined = route.params?.item;
 
@@ -22,7 +19,10 @@ const Customer_page = () => {
 
 
     return (
-        <View><Text>Customer_page</Text></View>
+        <View>
+            <Text>{item?.name}</Text>
+            <Text>{item?.address}</Text>
+        </View>
     )
 }
 

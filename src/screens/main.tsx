@@ -28,17 +28,18 @@ const Main: React.FC = ({ }) => {
 
     useEffect(() => {
         dispatch(setAllProducts([
-            { id: 1, name: He.apple },
-            { id: 2, name: He.banana },
-            { id: 3, name: He.strawberry },
-            { id: 4, name: He.grapes },
-            { id: 5, name: He.orange },
-            { id: 6, name: He.pineapple },
-            { id: 7, name: He.mango },
-            { id: 8, name: He.watermelon },
-            { id: 9, name: He.melon },
-            { id: 10, name: He.plum }
+            { id: 1, name: He.apple, lastPriceUsed: 10.0 },
+            { id: 2, name: He.banana, lastPriceUsed: 5.0 },
+            { id: 3, name: He.strawberry, lastPriceUsed: 12.0 },
+            { id: 4, name: He.grapes, lastPriceUsed: 8.0 },
+            { id: 5, name: He.orange, lastPriceUsed: 7.0 },
+            { id: 6, name: He.pineapple, lastPriceUsed: 15.0 },
+            { id: 7, name: He.mango, lastPriceUsed: 14.0 },
+            { id: 8, name: He.watermelon, lastPriceUsed: 9.0 },
+            { id: 9, name: He.melon, lastPriceUsed: 11.0 },
+            { id: 10, name: He.plum, lastPriceUsed: 6.0 }
         ]));
+
 
         dispatch(setAllCustomers([
             { id: 1, name: He.customer1.name, address: He.customer1.address },
