@@ -105,7 +105,7 @@ const Main: React.FC = ({ }) => {
                     <System_Button text={`${He.coustomers_list}`} functionUsed={() => customers_products_page("customers")} />
                 </View>
                 <View style={styles.button_container}>
-                    <System_Button text={He.strat_new_order} functionUsed={() => test()} />
+                    <System_Button text={He.strat_new_order} functionUsed={() => navigation.navigate('new_order')} />
                 </View>
                 <View style={styles.button_container}>
                     <System_Button text={He.continue_exist_order} functionUsed={() => test()} />

@@ -10,6 +10,21 @@ export interface Customer {
   address?: string;
 }
 
+export interface ProductOrder {
+  product: Product;
+  amount: number;
+}
+
+export interface OrderPerCustomer {
+  customer: Customer;
+  productOrder: ProductOrder[];
+}
+
+export interface Oredr {
+  orderPerCustomer: OrderPerCustomer[];
+  date: Date;
+}
+
 export type RootStackParamList = {
   navigate(arg0: string): unknown;
   Main: undefined;
@@ -18,4 +33,5 @@ export type RootStackParamList = {
   List_customers?: undefined;
   customer_page?: {item: Customer};
   add_new_customer?: undefined;
+  new_order?: undefined;
 };

@@ -16,6 +16,7 @@ import List_products from './src/screens/List_products';
 import List_customers from './src/screens/List_customers';
 import Customer_page from './src/screens/Customer_page';
 import Add_new_customer from './src/screens/Add_new_customer';
+import New_order from './src/screens/New_order';
 
 
 
@@ -49,6 +50,10 @@ const App = (): React.JSX.Element => {
             <Stack.Screen
               name="add_new_customer"
               component={Add_new_customer}
+            />
+            <Stack.Screen
+              name='new_order'
+              component={New_order}
             />
           </Stack.Navigator>
         </NavigationContainer>

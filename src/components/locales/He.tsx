@@ -5,12 +5,15 @@ const He = {
   new_product: "הכנס מוצר חדש",
   enter_new_coustomers: "הכנסה של לקוחות חדשים",
   date_string: "תאריך",
+  new_order: "הזמנה חדשה",
   strat_new_order: "התחל הזמנה חדשה",
   continue_exist_order: "המשך הזמנה קיימת",
   oredr_history: "היסטוריית הזמנות",
   products_list: "רשימת מוצרים",
   coustomers_list: "רשימת לקוחות",
   save: 'שמור',
+  customers: "לקוחות",
+  /////////////////////////// gonna move to DB
   apple: 'תפוח',   // Apple
   banana: 'בננה',  // Banana
   strawberry: 'תות', // Strawberry
@@ -21,7 +24,6 @@ const He = {
   watermelon: 'אבטיח', // Watermelon
   melon: 'מלון',   // Melon
   plum: 'שזיף',     // Plum
-  customers: "לקוחות",
   customer1: { name: 'משה כהן', address: 'רחוב התמר 5, תל אביב' },
   customer2: { name: 'שרה לוי', address: 'רחוב השקד 10, ירושלים' },
   customer3: { name: 'דוד ישראלי', address: 'שדרות העצמאות 15, חיפה' },
