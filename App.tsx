@@ -14,6 +14,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import List_products from './src/screens/List_products';
 import List_customers from './src/screens/List_customers';
+import Customer_page from './src/screens/Customer_page';
+import Add_new_customer from './src/screens/Add_new_customer';
 
 
 
@@ -39,6 +41,14 @@ const App = (): React.JSX.Element => {
             <Stack.Screen
               name="List_customers"
               component={List_customers}
+            />
+            <Stack.Screen
+              name="customer_page"
+              component={Customer_page}
+            />
+            <Stack.Screen
+              name="add_new_customer"
+              component={Add_new_customer}
             />
           </Stack.Navigator>
         </NavigationContainer>

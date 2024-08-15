@@ -45,8 +45,19 @@ const Main: React.FC = ({ }) => {
             { id: 2, name: He.customer2.name, address: He.customer2.address },
             { id: 3, name: He.customer3.name, address: He.customer3.address },
             { id: 4, name: He.customer4.name, address: He.customer4.address },
-            { id: 5, name: He.customer5.name, address: He.customer5.address }
-        ]))
+            { id: 5, name: He.customer5.name, address: He.customer5.address },
+            { id: 6, name: He.customer6.name, address: He.customer6.address },
+            { id: 7, name: He.customer7.name, address: He.customer7.address },
+            { id: 8, name: He.customer8.name, address: He.customer8.address },
+            { id: 9, name: He.customer9.name, address: He.customer9.address },
+            { id: 10, name: He.customer10.name, address: He.customer10.address },
+            { id: 11, name: He.customer11.name, address: He.customer11.address },
+            { id: 12, name: He.customer12.name, address: He.customer12.address },
+            { id: 13, name: He.customer13.name, address: He.customer13.address },
+            { id: 14, name: He.customer14.name, address: He.customer14.address },
+            { id: 15, name: He.customer15.name, address: He.customer15.address }
+        ]));
+
 
     }, [dispatch]);
 

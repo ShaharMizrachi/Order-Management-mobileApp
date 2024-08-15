@@ -15,4 +15,6 @@ export type RootStackParamList = {
   customers_products_page?: {message: string};
   List_products?: undefined;
   List_customers?: undefined;
+  customer_page?: {item: Customer};
+  add_new_customer?: undefined;
 };
