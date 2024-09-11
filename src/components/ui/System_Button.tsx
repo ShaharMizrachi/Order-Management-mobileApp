@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 8,
-        display: 'flex'
+        display: 'flex',
     },
 
 })
@@ -39,7 +39,7 @@ const extraStyle = StyleSheet.create({
     text: {
         fontFamily: fontFamilies.inter.SemiBold,
         color: '#FFFFFF',
-        fontSize: 16,
+        fontSize: 18,
 
     },
 })

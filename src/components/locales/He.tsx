@@ -13,6 +13,7 @@ const He = {
   coustomers_list: "רשימת לקוחות",
   save: 'שמור',
   customers: "לקוחות",
+  print: "הדפסה",
   /////////////////////////// gonna move to DB
   apple: 'תפוח',   // Apple
   banana: 'בננה',  // Banana
