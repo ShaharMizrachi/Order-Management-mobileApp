@@ -1,80 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Platform, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import He from '../components/locales/He';
-import { Oredr } from '../redux/types/types'; // Correct the spelling if needed
+import { Order } from '../redux/types/types'; // Correct the spelling here
 import System_Button from '../components/ui/System_Button';
-import { DatePickerModal } from 'react-native-paper-dates';
-import { Icon, Provider as PaperProvider } from 'react-native-paper'; // Correct import
-import { CalendarDate } from 'react-native-paper-dates/lib/typescript/Date/Calendar';
-import { Button as ButtonPapar } from 'react-native-paper';
-import { Calendar } from 'react-native-calendars';  // Import the Calendar component
+import DatePicker from 'react-native-date-picker';
 
 const New_order = () => {
-    const [newOrder, setNewOrder] = useState<Oredr>(); // Correct the spelling if needed
+    const [newOrder, setNewOrder] = useState<Order>(); // Corrected the spelling to Order
+    const [date, setDate] = useState(new Date());
+    const [open, setOpen] = useState(false); // State to control the visibility of DatePicker
 
     const saveOrder = () => {
-        // Save order logic here
+        // Implement save order logic here
+        console.log("Order saved with date:", date);
     };
-
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const day = tomorrow.getDate();
-    const month = tomorrow.getMonth() + 1; // Months are zero-based, so we add 1
-    const year = tomorrow.getFullYear();
 
     useEffect(() => {
-        console.log('====================================');
-        const formattedDate = `${day}/${month}/${year}`;
-        console.log(formattedDate);
-        console.log('====================================');
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const formattedDate = `${tomorrow.getDate()}/${tomorrow.getMonth() + 1}/${tomorrow.getFullYear()}`;
+        console.log('Formatted Date:', formattedDate);
     }, []);
-
-    const [date, setDate] = useState<CalendarDate>(new Date());
-    const [open, setOpen] = useState(false);
-
-    const onConfirm = (params: any) => {
-        setOpen(false);
-        setDate(params.date);
-    };
-
-    const onDismiss = () => {
-        setOpen(false);
-    };
 
     return (
         <View style={styles.pageContainer}>
             <View style={styles.titleMainView}>
                 <Text style={styles.title_text}>{He.new_order}</Text>
             </View>
-            <View style={styles.seconderyTitle}>
-                <Text>{ }</Text>
-                <Text></Text>
-            </View>
-            <View style={{ backgroundColor: "red", flex: 5 }}>
-                <PaperProvider>
-                    <View style={{ padding: 20 }}>
-                        <ButtonPapar onPress={() => setOpen(true)} uppercase={false} mode="outlined">
-                            {date ? date.toLocaleDateString() : 'Pick a date'}
-                        </ButtonPapar>
 
-                        <DatePickerModal
-                            locale="he"
-                            mode="single"
-                            visible={open}
-                            onDismiss={onDismiss}
-                            date={date}
-                            onConfirm={onConfirm}
-                        />
-
-                        {/* Add Calendar component */}
-
-                    </View>
-                </PaperProvider>
+            {/* Button to open DatePicker */}
+            <View style={styles.buttonContainer}>
+                <Button title={open ? "Close DatePicker" : "Open DatePicker"} onPress={() => setOpen(!open)} />
             </View>
 
-            {/* <View style={styles.saveButton}>
+            {/* Conditional rendering of DatePicker */}
+            {open && (
+                <View>
+                    <DatePicker
+                        date={date}
+                        onDateChange={setDate}
+                        mode="date"  // You can set it to "date", "time", or "datetime"
+                    />
+                </View>
+            )}
+
+            <View style={styles.saveButton}>
+                {/* Uncomment and use this to add save functionality */}
                 <System_Button text={He.save} functionUsed={() => saveOrder()} />
-            </View> */}
+            </View>
         </View>
     );
 };
@@ -98,7 +71,9 @@ const styles = StyleSheet.create({
         marginTop: 25,
         textDecorationLine: 'underline',
     },
-    seconderyTitle: {},
+    buttonContainer: {
+        margin: 20,
+    },
     saveButton: {
         flex: 0.5,
         marginHorizontal: 40,

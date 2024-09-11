@@ -20,7 +20,7 @@ export interface OrderPerCustomer {
   productOrder: ProductOrder[];
 }
 
-export interface Oredr {
+export interface Order {
   orderPerCustomer: OrderPerCustomer[];
   date: Date;
 }
