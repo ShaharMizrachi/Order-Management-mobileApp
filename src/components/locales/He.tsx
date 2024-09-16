@@ -15,6 +15,7 @@ const He = {
   customers: "לקוחות",
   customer: "לקוח",
   print: "הדפסה",
+  search_customer: "חפש לקוח",
   /////////////////////////// gonna move to DB
   apple: 'תפוח',   // Apple
   banana: 'בננה',  // Banana
