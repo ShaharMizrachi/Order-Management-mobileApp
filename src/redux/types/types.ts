@@ -21,6 +21,7 @@ export interface OrderPerCustomer {
 }
 
 export interface Order {
+  // every order
   orderPerCustomer: OrderPerCustomer[];
   date: Date;
 }
