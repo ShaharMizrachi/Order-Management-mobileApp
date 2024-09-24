@@ -5,9 +5,9 @@ import { Order } from '../redux/types/types'; // Correct the spelling here
 import System_Button from '../components/ui/System_Button';
 import DatePicker from 'react-native-date-picker';
 import CustomerBox from '../components/ui/CustomerBox';
+import ProductBox from '../components/ui/ProductBox';
 
 const New_order = () => {
-    const [newOrder, setNewOrder] = useState<Order>(); // Corrected the spelling to Order
     const [date, setDate] = useState(new Date());
     const [formattedDate, setFormattedDate] = useState<string>("")
     const [open, setOpen] = useState(false); // State to control the visibility of DatePicker
@@ -52,6 +52,7 @@ const New_order = () => {
                         />
                     </View>)}
                 <CustomerBox />
+                <ProductBox />
             </View>
 
 

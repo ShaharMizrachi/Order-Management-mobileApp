@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import He from '../locales/He'; // Assuming He is a localization object
 import { Dropdown } from 'react-native-element-dropdown';
-import AntDesign from 'react-native-vector-icons/AntDesign'; // Now using react-native-vector-icons
 
 export const CustomerBox = () => {
     const data = [
