@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "תפוח",
+    "lastPriceUsed": 3.5
+  },
+  {
+    "id": 2,
+    "name": "בננה",
+    "lastPriceUsed": 4.2
+  },
+  {
+    "id": 3,
+    "name": "תפוז",
+    "lastPriceUsed": 2.8
+  },
+  {
+    "id": 4,
+    "name": "ענב",
+    "lastPriceUsed": 9.0
+  },
+  {
+    "id": 5,
+    "name": "אפרסק",
+    "lastPriceUsed": 7.5
+  }
+]

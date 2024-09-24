@@ -1,16 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 import He from '../components/locales/He';
-import { Order } from '../redux/types/types'; // Correct the spelling here
+import { Order, OrderPerCustomer, Product } from '../redux/types/types'; // Correct the spelling here
 import System_Button from '../components/ui/System_Button';
 import DatePicker from 'react-native-date-picker';
 import CustomerBox from '../components/ui/CustomerBox';
 import ProductBox from '../components/ui/ProductBox';
+import products from '../api/products.json'
+import customers from '../api/customers.json'
 
 const New_order = () => {
     const [date, setDate] = useState(new Date());
     const [formattedDate, setFormattedDate] = useState<string>("")
     const [open, setOpen] = useState(false); // State to control the visibility of DatePicker
+    const [activeOrder, setActiveOrder] = useState<Order | undefined>(undefined);
+
+
+
+
+    // Initialize activeOrder with customers and products
+
+    useEffect(() => {
+        const orderPerCustomer: OrderPerCustomer[] = customers.map(customer => ({
+            customer,
+            productOrder: products.map(product => ({
+                product,
+                amount: 0,
+            }))
+        }));
+
+
+        // Set the active order with the customers and products
+        setActiveOrder({
+            orderPerCustomer,
+            date: new Date(),
+        });
+
+    }, [])
+
+
+
+
+
+
+
+
 
     const saveOrder = () => {
         // Implement save order logic here
