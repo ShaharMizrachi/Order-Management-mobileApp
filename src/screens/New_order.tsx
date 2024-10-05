@@ -85,7 +85,7 @@ const New_order = () => {
                             mode="date"
                         />
                     </View>)}
-                <CustomerBox />
+                <CustomerBox customers={activeOrder?.orderPerCustomer || []} />
                 <ProductBox />
             </View>
 
